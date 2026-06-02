@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimble Trends // Data Intelligence Core</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-950 text-gray-200 min-h-screen font-sans selection:bg-yellow-500/30 selection:text-yellow-400">
+
+    <nav class="border-b border-gray-900 bg-gray-950/80 backdrop-blur sticky top-0 z-50 px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="bg-yellow-500/10 border border-yellow-500/20 p-2 rounded-xl text-yellow-400">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+            </div>
+            <div>
+                <span class="text-md font-bold tracking-wider uppercase text-white">NIMBLE Trends<span class="text-yellow-500">.ai</span></span>
+                <p class="text-[10px] text-gray-500 font-mono tracking-wider">NIMBLE BASED LIVE DATA TERMINAL</p>
+            </div>
+        </div>
+        
+        <div id="status-badge" class="bg-gray-900 border border-gray-800 text-gray-400 text-xs px-3 py-1.5 rounded-xl font-medium flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></span> Nimble Engine Synced
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <section class="lg:col-span-2 space-y-6">
+            <div class="bg-gray-900/40 border border-gray-900 rounded-2xl p-6">
+                <div class="mb-4">
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="layout-list" class="w-4 h-4 text-yellow-500"></i> Scraped Ticker Manifest
+                    </h2>
+                    <p class="text-xs text-gray-400">Data streams captured via Nimble residential automated sessions</p>
+                </div>
+
+                <div class="overflow-hidden rounded-xl border border-gray-900 bg-black/10">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-900/60 text-gray-400 text-[11px] font-bold uppercase tracking-wider border-b border-gray-900">
+                                <th class="p-4">Ticker Asset</th>
+                                <th class="p-4">Reference Value</th>
+                                <th class="p-4">Grok Pulse</th>
+                                <th class="p-4 text-right">Metrics Extraction</th>
+                            </tr>
+                        </thead>
+                        <tbody id="watchlist-body" class="divide-y divide-gray-900 text-sm">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-gray-900/40 border border-gray-900 rounded-2xl p-6">
+                <h2 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                    <i data-lucide="radar" class="w-4 h-4 text-yellow-500"></i> Tracked Block Transactions
+                </h2>
+                <p class="text-xs text-gray-400 mb-4">Unusual block option movements or institutional spikes filtered from social text analysis.</p>
+                
+                <div id="flows-container" class="space-y-3">
+                    </div>
+            </div>
+        </section>
+
+        <section class="space-y-6">
+            <div class="bg-gradient-to-b from-gray-900/70 to-gray-900/20 border border-gray-900 rounded-2xl p-6">
+                <div class="border-b border-gray-900 pb-4 mb-4">
+                    <span class="text-[10px] uppercase tracking-widest text-yellow-500 font-bold font-mono">Signal Breakdown</span>
+                    <h2 id="focus-ticker" class="text-2xl font-black text-white mt-0.5">$NONE</h2>
+                    <p id="focus-name" class="text-xs text-gray-400">Select an asset from the list to display sentiment metrics.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 flex items-center gap-1.5">
+                        <i data-lucide="brain-circuit" class="w-3.5 h-3.5 text-yellow-500"></i> AI Directional Matrix
+                    </h3>
+                    
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs text-gray-300">
+                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span> Bullish Density</span>
+                            <span id="stat-bullish" class="font-bold font-mono text-yellow-500">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-950 border border-gray-900 rounded-full h-2 overflow-hidden">
+                            <div id="bar-bullish" class="bg-yellow-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs text-gray-300">
+                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Bearish Density</span>
+                            <span id="stat-bearish" class="font-bold font-mono text-gray-400">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-950 border border-gray-900 rounded-full h-2 overflow-hidden">
+                            <div id="bar-bearish" class="bg-gray-700 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-black/30 border border-gray-900 rounded-2xl p-5">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-1.5">
+                    <i data-lucide="database" class="w-3.5 h-3.5 text-gray-400"></i> Raw Text Captured Payload
+                </h3>
+                <pre id="raw-log-block" class="text-[11px] font-mono text-gray-500 max-h-60 overflow-y-auto whitespace-pre-wrap leading-relaxed bg-gray-950 p-3 rounded-xl border border-gray-900/60">Select an asset row to view raw terminal string data.</pre>
+            </div>
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
